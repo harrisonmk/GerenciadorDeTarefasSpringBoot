@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+    <head>
+        <title>Alteracao de Tarefa</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+                <!-- importa  o css do bootstrap -->  
+                <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"  
+
+                      </head>
+
+
+
+
+                    <body>
+                        
+                      <!-- chama os itens dentro do fragmentos.html com o nome cabecalho -->
+                        <div th:replace="fragmentos/fragmentos :: cabecalho"></div>   
+                       
+                        <div class="container">
+                             <h3>Inserção de nova Tarefa</h3>
+                        <!-- cria um formulario com metodo post e um objeto tarefa que vai ser ligado com o meto inserir tarefa -->
+                        <form class="form-horizontal" action="/tarefas/inserir" method="post" th:object="${tarefa}">
+                            <input type="hidden" th:field="*{id}">
+                            <div class="row">
+                                <!-- ocupa metade da tela com o col-md-6 -->
+                                <div class="form-group col-md-6">
+                                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('titulo')}">
+             
+                                        <label th:errors="*{titulo}" class="validation-message"> </label> 
+                                    </div>
+                                    <label>Titulo:</label>
+                                    <!-- campo de texto obrigatorio com tamanho maximo 50 caracteres vinculado com o titulo do model -->
+                                    <input type="text"  class="form-control" th:field="*{titulo}">
+                                    
+                                </div>  
+                                
+                            </div>   
+                            
+                            
+                                    <div class="row">
+                                <!-- ocupa metade da tela com o col-md-6 -->
+                                <div class="form-group col-md-6">
+                                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('descricao')}">
+             
+                                        <label th:errors="*{descricao}" class="validation-message">  </label> 
+                                    </div>
+                                    <label>Descrição:</label>
+                                    <!-- campo de texto  com tamanho maximo 100 caracteres vinculado com o titulo do model -->
+                                    <input type="text" class="form-control" th:field="*{descricao}">
+                                    
+                                </div>  
+                                
+                            </div> 
+                            
+                          
+                             <div class="row">
+                                <!-- ocupa metade da tela com o col-md-6 -->
+                                <div class="form-group col-md-6">
+                                     <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataExpiracao')}">
+             
+                                        <label th:errors="*{dataExpiracao}" class="validation-message"> </label>  
+                                    </div>
+                                    <label>Data Expiração:</label>
+                                    <!-- campo de texto  com tamanho maximo 100 caracteres vinculado com o titulo do model -->
+                                    <input type="date" class="form-control" th:field="*{dataExpiracao}">
+                                    
+                                </div>  
+                                
+                            </div> 
+                            
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            
+                        </form>
+                        
+                        </div>
+
+                        <!-- importa  o Jquery -->
+                        <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>   
+                        <!-- importa  o js do bootstrap -->
+                        <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>     
+
+                    </body>
+
+
+
+
+
+                    </html>

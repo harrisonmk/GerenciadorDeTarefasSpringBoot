@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    
+    <head>
+        <title>Gerenciador de tarefas pagina inicial</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+        <!-- importa  o css do bootstrap -->  
+        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"
+            
+    </head>
+    
+    
+    
+    <body>
+        
+        <!-- chama os itens dentro do fragmentos.html com o nome cabecalho -->
+        <div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+        
+        <!-- cria uma margem entre as bordas -->
+        <div class="container">
+        <p>Olá seja bem-vindo ao gerenciador de tarefas</p>    
+        
+        <!-- mensagem que vai ser buscada da classe de controle -->
+        <p th:text="${Mensagem}">  </p>
+       
+        </div>
+        
+         <!-- importa  o Jquery -->
+        <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>   
+         <!-- importa  o js do bootstrap -->
+        <script src="/webjars/bootstrap/js/bootstrap.min.js"></script> 
+        
+    </body>
+    
+    
+    
+</html>

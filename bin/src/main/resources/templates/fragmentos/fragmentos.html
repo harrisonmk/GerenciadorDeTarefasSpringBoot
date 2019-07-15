@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+                <!-- importa  o css do bootstrap -->  
+                <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"
+
+                      </head>
+
+
+
+                    <body>
+
+                        <!-- ** cabecalho ** -->
+                        <!-- pode ser chamado em qualquer outro arquivo html com o thymeleaf com a anotacao th:fragment -->
+                        <!-- barra de navegação do bootstrap | barra de navegacao que ocupa toda a tela e serve para dispositivos com tela grande | cor escura e fundo escuro -->
+                        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="cabecalho">
+
+                            <!-- link com uns texto estilizados -->
+                            <a class="navbar-brand" href="#">Gerenciador de Tarefas</a>     
+
+                            <!-- botao que vai fazer esconder ou mostrar as opcoes desejadas -->
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-app">
+
+                                <!-- desenha os 3 tracos do menu hamburguer -->
+                                <span class="navbar-toggler-icon"></span>  
+
+                            </button>
+
+                            <!-- todo conteudo dessa div vai ser escondido ou mostrado se o usuario clicar no botao -->
+                            <div class="collapse navbar-collapse " id="navbar-app"> 
+
+
+                                <!-- onde vai ficar os itens do menu de navegação -->
+                                <div class="navbar-nav">
+
+                                    <!-- é um dos itens de menu -->
+                                    <a class="nav-item nav-link" href="/">Home</a> 
+                                     <a class="nav-item nav-link" href="/tarefas/listar">Tarefas</a> 
+
+                                </div>
+
+
+                            </div>
+
+                        </nav>
+
+
+
+                        <!-- importa  o Jquery -->
+                        <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>   
+                        <!-- importa  o js do bootstrap -->
+                        <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>     
+
+                    </body>
+
+
+
+                    </html>

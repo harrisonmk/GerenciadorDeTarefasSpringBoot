@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Gerenciador de Tarefas - Listagem</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+                <!-- importa  o css do bootstrap -->  
+                <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"
+
+                      </head>
+
+
+                    <body>
+
+                        <!-- chama os itens dentro do fragmentos.html com o nome cabecalho -->
+                        <div th:replace="fragmentos/fragmentos :: cabecalho"></div>    
+
+                        <!--mostra a lista de tarefas em forma de cards do bootstrap -->
+                        <div class="container">
+                            <h3>Lista de Tarefas</h3>
+                            <!-- cria um link como um botao e deixa ele verde -->
+                            <a href="/tarefas/inserir" class="btn btn-success">Inserir Nova Tarefa</a>
+                            <!--cada div dessa vai estar uma tarefa o each é um for que vai percorrer essas tarefas  -->
+                            <div th:each="tarefa: ${tarefa}" style="margin: 10px">
+                                <!-- cria o card com fundo claro -->
+                                <div class="card bg-light mb-3">
+
+                                    <!--cabecalho e corpo do card -->
+                                    <div class="card-header" th:text="${tarefa.titulo}"> </div>
+                                    <div class="card-body">
+
+                                        <p class="card-text" th:text="${tarefa.descricao}"></p>
+                                        <!-- imprime a data de expiracao e faz a formatacao do campo data -->
+                                        <p class="card-text" th:text="${'Data de expiracao: '+ #dates.format(tarefa.dataExpiracao,'dd/MM/yyyy')}"></p>
+                                        
+                                        <!-- verifica se a tarefa esta em dia -->
+                                        <p class="card-text" style="color: green;" th:if="${tarefa.dataExpiracao.after(new java.util.Date())}">Em Dia</p>
+                                         <!-- verifica se a tarefa esta Atrasada -->
+                                        <p class="card-text" style="color: red;" th:if="${tarefa.dataExpiracao.before(new java.util.Date())}">Atrasada</p>
+                                        
+                                    </div> 
+
+                                    <div class="card-footer bg-light">
+                                        
+                                        <p>
+                                            
+                                            <a th:href="@{/tarefas/alterar/{id}(id=${tarefa.id})}">Alterar</a> | 
+                                             <a th:href="@{/tarefas/excluir/{id}(id=${tarefa.id})}">Excluir</a> | 
+                                             <!-- só vai mostrar o link se a tarefa não estiver concluida por causa do th:if -->
+                                             <a th:if="${!tarefa.estaConcluida}" th:href="@{/tarefas/concluir/{id}(id=${tarefa.id})}">Concluir</a> 
+                                            
+                                        </p>  
+                                        
+                                        
+                                    </div>
+                                    
+                                </div>  
+                            </div>
+
+                        </div>
+
+
+                        <!-- importa  o Jquery -->
+                        <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>   
+                        <!-- importa  o js do bootstrap -->
+                        <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>   
+
+                    </body>
+
+
+
+
+                    </html>

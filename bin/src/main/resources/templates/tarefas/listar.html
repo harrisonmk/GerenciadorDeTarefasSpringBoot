@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+                </head>
+
+
+                <body>
+
+                    <!-- chama os itens dentro do fragmentos.html com o nome cabecalho -->
+                    <div th:replace="fragmentos/fragmentos :: cabecalho"></div>    
+
+                    <!--mostra a lista de tarefas em forma de cards do bootstrap -->
+                    <div class="container">
+                        <h3>Lista de Tarefas</h3>
+
+                        <!--cada div dessa vai estar uma tarefa o each é um for que vai percorrer essas tarefas  -->
+                        <div th:each="tarefa: ${terefas}">
+                            <!-- cria o card com fundo claro -->
+                            <div class="card bg-light mb-3">
+
+                                <!--cabecalho e corpo do card -->
+                                <div class="card-header" th:text="${tarefa.titulo}"> </div>
+                                <div class="card-body">
+
+                                    <p class="card-text" th:text="${tarefa.descricao}"></p>
+                                    <!-- imprime a data de expiracao e faz a formatacao do campo data -->
+                                    <p class="card-text" th:text="${'Data de expiracao: '+ #dates.format(tarefa.dataExpiracao,'dd/MM/yyyy')}"></p>
+                                </div> 
+
+                            </div>  
+                        </div>
+
+                    </div>
+
+
+
+
+                </body>
+
+
+
+
+                </html>

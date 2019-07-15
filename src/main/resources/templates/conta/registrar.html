@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+    <head>
+        <title>Gerenciador de Tarefas - Inclusao Usuario</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+                <!-- importa  o css do bootstrap -->  
+                <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"  
+
+                      </head>
+
+
+
+
+                    <body>
+                        
+                      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+                            <!-- link com uns texto estilizados -->
+                            <a class="navbar-brand" href="#">Gerenciador de Tarefas</a>     
+
+
+
+                        </nav>   
+                       
+                        <div class="container">
+                             <h3>Insercao de novo Usuario</h3>
+                        <!-- cria um formulario com metodo post e um objeto tarefa que vai ser ligado com o meto inserir tarefa -->
+                        <form class="form-horizontal" action="/registration" method="post" th:object="${usuario}">
+                            
+                            <div class="row">
+                                <!-- ocupa metade da tela com o col-md-6 -->
+                                <div class="form-group col-md-6">
+                                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}">
+             
+                                        <label th:errors="*{email}" class="validation-message"> </label> 
+                                    </div>
+                                    <label>E-mail:</label>
+                                    <!-- campo de texto obrigatorio com tamanho maximo 50 caracteres vinculado com o titulo do model -->
+                                    <input type="text"  class="form-control" th:field="*{email}">
+                                    
+                                </div>  
+                                
+                            </div>   
+                            
+                            
+                                    <div class="row">
+                                <!-- ocupa metade da tela com o col-md-6 -->
+                                <div class="form-group col-md-6">
+                                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('senha')}">
+             
+                                        <label th:errors="*{senha}" class="validation-message">  </label> 
+                                    </div>
+                                    <label>Senha:</label>
+                                    <!-- campo de texto  com tamanho maximo 100 caracteres vinculado com o titulo do model -->
+                                    <input type="password" class="form-control" th:field="*{senha}">
+                                    
+                                </div>  
+                                
+                            </div> 
+                            
+                          
+                        
+                            
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            
+                        </form>
+                        
+                        </div>
+
+                        <!-- importa  o Jquery -->
+                        <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>   
+                        <!-- importa  o js do bootstrap -->
+                        <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>     
+
+                    </body>
+
+
+
+
+
+                    </html>
